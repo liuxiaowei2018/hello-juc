@@ -1,4 +1,4 @@
-package com.open.concurrent;
+package com.open.juc;
 
 import cn.hutool.core.thread.ThreadFactoryBuilder;
 import lombok.extern.slf4j.Slf4j;
