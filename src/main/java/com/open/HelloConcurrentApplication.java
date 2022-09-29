@@ -1,4 +1,4 @@
-package com.open.juc;
+package com.open;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

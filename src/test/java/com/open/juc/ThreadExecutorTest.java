@@ -9,6 +9,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.concurrent.*;
 import java.util.stream.IntStream;
+import com.open.HelloConcurrentApplication;
 
 /**
  * @author liuxiaowei
