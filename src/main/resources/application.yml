@@ -2,6 +2,12 @@ spring:
   # datasource 数据源配置内容
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      minimum-idle: 10 # 连接池中允许的最小连接数。缺省值：10
+      maximum-pool-size: 100 # 连接池中允许的最大连接数。缺省值：10
+      auto-commit: true # 自动提交
+      idle-timeout: 30000 # 一个连接idle状态的最大时长（毫秒），超时则被释放（retired），缺省:10分钟
+      max-lifetime: 1800000 # 一个连接的生命时长（毫秒），超时而且没被使用则被释放（retired），缺省:30分钟，建议设置比数据库超时时长少30秒
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/hello?useSSL=false&useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
     username: root
