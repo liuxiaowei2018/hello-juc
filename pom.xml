@@ -10,7 +10,7 @@
         <relativePath/>
     </parent>
     <groupId>com.open</groupId>
-    <artifactId>hello-concurrent</artifactId>
+    <artifactId>hello-juc</artifactId>
     <version>1.0</version>
     <packaging>jar</packaging>
 
