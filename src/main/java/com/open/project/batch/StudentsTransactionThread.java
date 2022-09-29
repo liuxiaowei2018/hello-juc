@@ -33,8 +33,6 @@ public class StudentsTransactionThread {
     @Autowired
     private PlatformTransactionManager transactionManager;
 
-    List<TransactionStatus> transactionStatuses = Collections.synchronizedList(new ArrayList<>());
-
     /**
      * 需要等待线程执行完成后才会提交事务，所有任会占用Jdbc连接池，如果线程数量超过连接池最大数量会产生连接超时。
      * 所以在使用过程中任要控制线程数量(在2-5个线程时操作时间最快)
@@ -45,6 +43,8 @@ public class StudentsTransactionThread {
     public void updateStudentWithThreadsAndTrans(int threadCount) throws InterruptedException {
         //查询总数据
         List<Student> allStudents = studentMapper.selectList(new QueryWrapper<>());
+
+        List<TransactionStatus> transactionStatuses = Collections.synchronizedList(new ArrayList<>());
 
         //每个线程处理的数据量
         final Integer dataPartionLength = (allStudents.size() + threadCount - 1) / threadCount;
