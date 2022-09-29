@@ -36,7 +36,7 @@ public class StudentsTransactionThreadTest {
 
     @Test
     public void test() throws Exception {
-        transactionThread.updateStudentWithThreadsAndTrans();
+        transactionThread.updateStudentWithThreadsAndTrans(5);
     }
 
 }

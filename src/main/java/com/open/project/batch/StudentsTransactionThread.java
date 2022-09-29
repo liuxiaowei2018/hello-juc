@@ -42,12 +42,9 @@ public class StudentsTransactionThread {
      * @date 2022/9/29 16:27
      */
     @Transactional(propagation = Propagation.REQUIRED, rollbackFor = {Exception.class})
-    public void updateStudentWithThreadsAndTrans() throws InterruptedException {
+    public void updateStudentWithThreadsAndTrans(int threadCount) throws InterruptedException {
         //查询总数据
         List<Student> allStudents = studentMapper.selectList(new QueryWrapper<>());
-
-        // 线程数量
-        final Integer threadCount = 2;
 
         //每个线程处理的数据量
         final Integer dataPartionLength = (allStudents.size() + threadCount - 1) / threadCount;
@@ -91,7 +88,6 @@ public class StudentsTransactionThread {
         }
 
         if (!transactionStatuses.isEmpty()) {
-            isError.set(true);
             if (isError.get()) {
                 System.out.println("批量回滚");
                 transactionStatuses.forEach(s -> transactionManager.rollback(s));
