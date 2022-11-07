@@ -16,6 +16,11 @@ import java.util.concurrent.locks.ReentrantLock;
  *    A释放锁之前，自己可以重复获取此锁（state累加），这就是可重入的概念。
  * 注意：获取多少次锁就要释放多少次锁，保证state能回到0
  *
+ * 非公平锁:
+ *  如果同时还有另一个线程进来尝试获取，那么有可能会让这个线程抢先获取；
+ * 公平锁:
+ *  如果同时还有另一个线程进来尝试获取，当它发现自己不是在队首的话，就会排到队尾，由队首的线程获取到锁。
+ *
  */
 public class ReentrantLockDemo {
 
