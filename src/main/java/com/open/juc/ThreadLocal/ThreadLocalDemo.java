@@ -9,6 +9,18 @@ public class ThreadLocalDemo {
 
     private static ThreadLocal<String> threadLocal = new ThreadLocal<>();
 
+    //     static class ThreadLocalMap {
+    //        static class Entry extends WeakReference<ThreadLocal<?>> {
+    //            /** The value associated with this ThreadLocal. */
+    //            Object value;
+    //
+    //            Entry(ThreadLocal<?> k, Object v) {
+    //                super(k);
+    //                value = v;
+    //            }
+    //        }
+    // 每个 Thread 里都有一个 ThreadLocalMap，而 ThreadLocalMap 中真正承载数据的是一个 Entry 数组，Entry 的 key 是 threadlocal 对象的弱引用
+
     public static void main(String[] args) {
         threadLocal.set("hello");
         System.out.println("主线程获取的value:" + threadLocal.get());
