@@ -18,6 +18,21 @@ public class BlockingQueueDemo {
     }
 
     /**
+     * ArrayBlockingQueue与线程池
+     */
+    private static void arrayQueue() {
+        System.out.println("=======ArrayBlockingQueue======");
+        Executor executors = new ThreadPoolExecutor(
+                2, 3, 30, TimeUnit.SECONDS,
+                new ArrayBlockingQueue<Runnable>(2));
+        // 创建一个corePoolSize为2，maximumPoolSize为3的线程池。执行6个任务则过程如下:
+        // 1.任务1和2在核心线程中执行；
+        // 2.任务3和4进来时，放到ArrayBlockingQueue缓存队列中，并且只能放2个（ArrayBlockingQueue设置的大小为2）；
+        // 3.任务5和6进来的时候，任务5新建线程来执行任务，已经达到最大线程数3，所以任务6拒绝；
+        // 4.当有线程执行完的时候，再将任务3和4从队列中取出执行
+    }
+
+    /**
      * BlockingQueue常用方法测试
      */
     private static void testBlockingQueue() throws InterruptedException {
