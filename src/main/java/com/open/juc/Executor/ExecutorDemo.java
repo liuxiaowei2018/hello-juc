@@ -46,6 +46,13 @@ public class ExecutorDemo {
     public static void main(String[] args) {
         // 执行线程
         //execute();
+        testExecutor();
+    }
+
+    /**
+     * 线程池参数测试
+     */
+    private static void testExecutor() {
         ThreadPoolExecutor executor = new ThreadPoolExecutor(5, 10,
                 200, TimeUnit.MILLISECONDS,
                 new LinkedBlockingDeque<>(4));
@@ -60,9 +67,6 @@ public class ExecutorDemo {
         }
         executor.shutdown();
     }
-
-
-
 
     static class MyTask implements Runnable {
 
@@ -83,7 +87,6 @@ public class ExecutorDemo {
             System.out.println("-----------------------task " + taskNum + "执行完毕");
         }
     }
-
 
     /**
      * 执行线程
